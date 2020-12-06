@@ -1,0 +1,33 @@
+<main>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <span class="lead">News from <strong>{{ countryName }}</strong></span>
+                <button class="btn btn-warning float-right" [routerLink]="['/']">Back</button>
+                <p><small>*Provided by newsapi.org.</small></p>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3" *ngFor="let a of articleList">
+            <div class="col-md-6 mt-3">
+                <img src="{{ a.imageURL }}" alt="Image not available">
+            </div>
+            <div class="col-md-6 mt-3">
+                <article>
+                    <p class="font-weight-bold">{{ a.title }}</p>
+                    <p>Source: {{ a.source }}</p>
+                    <p>Author: {{ a.author }}</p>
+                    <p>Published at: {{ a.publishedAt }}</p>
+                    <p>{{ a.desc }}</p>
+                    <a href="{{ a.url }}" target="_blank" class="btn btn-primary">Read More</a>
+                </article>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <p class="lead text-center">End of list</p>
+            </div>
+        </div>
+    </div>
+</main>
