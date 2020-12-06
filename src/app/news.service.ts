@@ -74,7 +74,8 @@ export class NewsService {
         }
 
         if(articleList.length <= 0) {
-            const url = 'https://newsapi.org/v2/top-headlines';
+            // const url = 'https://newsapi.org/v2/top-headlines';
+            const server = '/api/news';
             const params = (new HttpParams())
                 .set('country', country)
                 .set('category', this.CATEGORY)
@@ -84,7 +85,7 @@ export class NewsService {
             const headers = (new HttpHeaders()).set('X-Api-Key', apiKey);
 
             console.info('Calling API to retrieve news articles...');
-            const response = await this.http.get(url, { params, headers }).toPromise();
+            const response = await this.http.get(server, { params, headers }).toPromise();
             
             const timestamp = Date.now();
             articleList = (response['articles'] as any[]).map(a => ({
